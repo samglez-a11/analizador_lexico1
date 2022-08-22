@@ -322,13 +322,19 @@ namespace ejem1
                             lexema += c;
                             estado = 9;
                         }
-                        else
+                        else if(c == ' ' || c = '\n')
                         {
                             addToken(lexema, "Id", 0, fila, columna, i - lexema.Length);
                             lexema = "";
                             i--;
                             columna--;
                             estado = 0;
+                        }
+                        else 
+                        {
+                            MessageBox.Show("Hay un error lexico con: " + c);
+                            estado = 0;
+                            i = entrada.Length;
                         }
                         break;
                     case -99:
