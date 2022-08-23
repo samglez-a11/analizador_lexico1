@@ -207,8 +207,7 @@ namespace ejem1
                                 }
                                 else
                                 {
-                                    lexema += c;
-                                    estado = 9;
+                                    addToken(lexema, "Id", 0, fila, columna, i - lexema.Length);
 
                                 }
                             }
@@ -316,27 +315,7 @@ namespace ejem1
                             lexema = "";
                         }
                         break;
-                    case 9:
-                        if (Char.IsLetterOrDigit(c))
-                        {
-                            lexema += c;
-                            estado = 9;
-                        }
-                        else if(c == ' ' || c = '\n')
-                        {
-                            addToken(lexema, "Id", 0, fila, columna, i - lexema.Length);
-                            lexema = "";
-                            i--;
-                            columna--;
-                            estado = 0;
-                        }
-                        else 
-                        {
-                            MessageBox.Show("Hay un error lexico con: " + c);
-                            estado = 0;
-                            i = entrada.Length;
-                        }
-                        break;
+                    
                     case -99:
                         lexema += c;
 
